@@ -5,30 +5,33 @@
 int main()
 {
     FILE* file = nullptr;
-    int n = 0;
-    Card* card = new Card[n];
+    int size = 0;
+    Card* card = new Card[size];
     int index = 0;
 
-    loadCardsFromBinaryFile(card, n);
+    loadCardsFromBinaryFile(card, size);
 
     int menu = -1;
     do
     {
+        cout << "Arr size:" << size << endl;
         showMenu();
         cin >> menu;
         cin.ignore();
+
         switch (menu)
         {
         case 1:
-            n++;
-            card->fillCard();
+            ++size;
+            card[size - 1].fillCard();
             cout << "\nCard was added\n";
             break;
         case 2:
             cout << "Input index: "; cin >> index;
-            deleteCard(card, n, index);
+            deleteCard(card, size, index);
+            break;
         case 3:
-            for (int i = 0; i < n; i++) {
+            for (int i = 0; i < size; i++) {
                 cout << "Card #" << i + 1 << "\n";
                 card[i].printCard();
             }
@@ -43,7 +46,7 @@ int main()
             cout << "Money has been debited from your card\n";
             break;
         case 6:
-            saveCardsToBinaryFile(card, n);
+            saveCardsToBinaryFile(card, size);
             cout << "\nCards were saved\n";
             break;
         case 0:
@@ -53,5 +56,4 @@ int main()
             break;
         }
     } while (menu != 0);
-    delete[] card;
 }

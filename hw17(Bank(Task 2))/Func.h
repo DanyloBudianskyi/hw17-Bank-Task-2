@@ -16,6 +16,7 @@ void showMenu() {
 	cout << "--------------------------------\n";
 	cout << ">>> ";
 }
+
 void loadCardsFromBinaryFile(Card*& cards, int& numberOfCards) {
 	FILE* file = nullptr;
 	fopen_s(&file, "bank.bin", "rb");
@@ -29,6 +30,8 @@ void loadCardsFromBinaryFile(Card*& cards, int& numberOfCards) {
 		fclose(file);
 	}
 }
+
+
 
 void saveCardsToBinaryFile(Card* cards, int numberOfCards) {
 	FILE* file = nullptr;
@@ -71,7 +74,7 @@ void deleteCard(Card*& cards, int& numberOfCards, int& index) {
 		}
 		delete cards;
 		cards = temp;
-		--numberOfCards;
+		numberOfCards -= 1;
 		cout << "Card with index " << index + 1 << " was deleted\n";
 	}
 	else {

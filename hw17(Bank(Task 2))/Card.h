@@ -39,7 +39,6 @@ struct Card {
 		int size = strlen(name) + 1;
 		fwrite(&size, sizeof(int), 1, file);
 		fwrite(name, sizeof(char), size, file);
-
 		fwrite(&number, sizeof(unsigned long), 1, file);
 		fwrite(&money, sizeof(double), 1, file);
 	}
